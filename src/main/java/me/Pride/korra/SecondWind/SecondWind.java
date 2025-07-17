@@ -60,17 +60,15 @@ public class SecondWind extends AirAbility implements AddonAbility, PassiveAbili
 		player.sendMessage(Element.AIR.getColor() + "You gained a Second Wind!");
 
 		player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 0.75F, 0.5F);
-		player.getWorld().spawnParticle(Particle.GUST_EMITTER_LARGE, player.getLocation(), 1, 0.5, 0.5, 0.5, 0.1);
+		player.getWorld().spawnParticle(Particle.GUST_EMITTER_SMALL, player.getLocation(), 1, 0.5, 0.5, 0.5, 0.1);
 
 		long start = System.currentTimeMillis();
 
 		Tuple<Attribute, Double, Double>[] attributes = new Tuple[]{
-			Tuple.of(
-					Attribute.KNOCKBACK_RESISTANCE,
+			Tuple.of(Attribute.KNOCKBACK_RESISTANCE,
 					player.getAttribute(Attribute.KNOCKBACK_RESISTANCE).getValue(),
 					player.getAttribute(Attribute.KNOCKBACK_RESISTANCE).getBaseValue() + knockbackResistance),
-			Tuple.of(
-					Attribute.MOVEMENT_SPEED,
+			Tuple.of(Attribute.MOVEMENT_SPEED,
 					player.getAttribute(Attribute.MOVEMENT_SPEED).getValue(),
 					player.getAttribute(Attribute.MOVEMENT_SPEED).getBaseValue() + movementSpeed),
 			Tuple.of(Attribute.OXYGEN_BONUS,
