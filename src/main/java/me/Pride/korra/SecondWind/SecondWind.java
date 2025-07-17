@@ -244,17 +244,13 @@ class SecondWindListener implements Listener {
 		if (bPlayer.isElementToggled(Element.EARTH) && CoreAbility.hasAbility(player, EarthArmor.class)) {
 			return;
 		}
-		double chance = ConfigManager.getConfig().getDouble("ExtraAbilities.Prride.SecondWind.Chance");
+		double chance = ConfigManager.getConfig().getInt("ExtraAbilities.Prride.SecondWind.Chance");
 		double healthThreshold = ConfigManager.getConfig().getDouble("ExtraAbilities.Prride.SecondWind.HealthThreshold");
 		double damageThreshold = ConfigManager.getConfig().getDouble("ExtraAbilities.Prride.SecondWind.DamageThreshold");
 		double endurance = ConfigManager.getConfig().getDouble("ExtraAbilities.Prride.SecondWind.Endurance");
 
-		double randomChance = ThreadLocalRandom.current().nextInt(100);
-
-		player.sendMessage(randomChance + "");
-
 		if (player.getHealth() <= healthThreshold) {
-			if (randomChance <= chance) {
+			if (ThreadLocalRandom.current().nextInt(100) <= chance) {
 				if (event.getDamage() >= damageThreshold) {
 					event.setDamage(event.getDamage() / (100.0 / endurance));
 					SecondWind.activate(player);
